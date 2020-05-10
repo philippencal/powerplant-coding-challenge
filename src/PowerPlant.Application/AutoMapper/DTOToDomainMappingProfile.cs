@@ -28,6 +28,10 @@ namespace PowerPlant.Application.AutoMapper
                 .ForMember(o => o.MinimumPowerAmount, m => m.MapFrom(s => s.MinimumPowerAmount))
                 .ForMember(o => o.MaximumPowerAmount, m => m.MapFrom(s => s.MaximumPowerAmount))
                 .ForMember(o => o.EnergyCost, m => m.MapFrom(s => s.CalculateEnergyCost()));
+
+            CreateMap<Models.PowerSupply, PowerSupplyDTO>()
+                .ForMember(o => o.Name, m => m.MapFrom(s => s.PowerPlant))
+                .ForMember(o => o.Power, m => m.MapFrom(s => s.PowerProduced));
         }
     }
 }
