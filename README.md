@@ -1,2 +1,2 @@
-# powerplant-coding-challenge
-This is my solution for the ENGIE code challenge.
+What is the PowerPlant Project?
+=====================
