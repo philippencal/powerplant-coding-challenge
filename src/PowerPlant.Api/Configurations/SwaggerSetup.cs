@@ -19,7 +19,7 @@ namespace PowerPlant.Api.Configurations
                     Title = "PowerPlant API",
                     Description = "This API is part of a code challenge, and the objective is to calculate how much power each of a multitude of different powerplants need to produce for reach load information given.",
                     Contact = new OpenApiContact { Name = "Philip Pencal", Email = "gpencal@hotmail.com", Url = new Uri("https://www.linkedin.com/in/philip-pencal/") },
-                    License = new OpenApiLicense { Name = "MIT", Url = new Uri("https://github.com/") }
+                    License = new OpenApiLicense { Name = "GNU GPL V3", Url = new Uri("https://github.com/philipgpencal/powerplant-coding-challenge/blob/master/LICENSE") }
                 });
 
                 // Set the comments path for the Swagger JSON and UI.
