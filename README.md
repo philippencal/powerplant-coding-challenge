@@ -5,7 +5,7 @@
 This repository is part of a code challenge provided by [ENGIE](https://www.engie.com/), internal development teams.
 The goal of this coding challenge was to provide the applicant some insight into the business and to be discussed in future interview steps.
 
-[![N|Solid](https://github.com/philipgpencal/powerplant-coding-challenge/blob/master/blob/challenge_swagger.png)]
+![PowerPlant API Documentation](https://github.com/philipgpencal/powerplant-coding-challenge/blob/master/blob/challenge_swagger.png)
 
 ## Implementation
 
