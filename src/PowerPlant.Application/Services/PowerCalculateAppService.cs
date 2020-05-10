@@ -28,20 +28,24 @@ namespace PowerPlant.Application.Services
                 powerplants.Add(PowerPlantFactory.Build(mapper, payloadDTO.Fuels, powerplantDTO));
             }
 
-            foreach(var powerplant in powerplants.OrderBy(p => p.CalculateEnergyCost()))
+            var powerplantsCostGroups = powerplants.GroupBy(p => p.CalculateEnergyCost()).OrderBy(p => p.Key);
+            foreach (var powerplantsCostGroup in powerplantsCostGroups)
             {
-                if(loadingRequired == 0)
+                if (loadingRequired == 0)
                 {
                     break;
                 }
 
-                if(powerplant.CanOperate())
+                foreach (var powerplant in powerplantsCostGroup)
                 {
-                    var powerProduced = powerplant.ProducePower(loadingRequired);
-                    if (powerProduced > 0)
+                    if (powerplant.CanOperate())
                     {
-                        loadingRequired -= powerProduced;
-                        supplyRequired.Add(new PowerSupplyRequiredDTO { Name = powerplant.Name, Power = powerProduced });
+                        var powerProduced = powerplant.ProducePower(loadingRequired);
+                        if (powerProduced > 0)
+                        {
+                            loadingRequired -= powerProduced;
+                            supplyRequired.Add(new PowerSupplyRequiredDTO { Name = powerplant.Name, Power = powerProduced });
+                        }
                     }
                 }
             }
