@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using PowerPlant.Api.Configurations;
 using PowerPlant.Infra.CrossCutting.Ioc;
 
@@ -37,7 +38,7 @@ namespace PowerPlant.Api
             RegisterServices(services);
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             app.UseStaticFiles();
 
@@ -56,6 +57,8 @@ namespace PowerPlant.Api
             });
 
             app.ConfigureSwaggerSetup();
+
+            loggerFactory.ConfigureLoggingSetup();
         }
 
         private static void RegisterServices(IServiceCollection services)

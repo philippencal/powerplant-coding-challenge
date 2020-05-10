@@ -11,12 +11,10 @@ namespace PowerPlant.Api.Controllers
     [Route("api/v{v:apiVersion}/[controller]")]
     public class PowerCalculateController : ControllerBase
     {
-        private readonly ILogger<PowerCalculateController> logger;
         private readonly IPowerCalculateAppService powerCalculateAppService;
 
-        public PowerCalculateController(ILogger<PowerCalculateController> logger, IPowerCalculateAppService powerCalculateAppService)
+        public PowerCalculateController(IPowerCalculateAppService powerCalculateAppService)
         {
-            this.logger = logger;
             this.powerCalculateAppService = powerCalculateAppService;
         }
 
