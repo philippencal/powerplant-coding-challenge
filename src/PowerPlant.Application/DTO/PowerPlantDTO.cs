@@ -16,13 +16,15 @@ namespace PowerPlant.Application.DTO
         public string Type { get; set; }
 
         [JsonProperty("efficiency")]
+        [Range(0.1, int.MaxValue, ErrorMessage = "The efficiency value must be bigger than zero")]
         public decimal Efficiency { get; set; }
 
         [JsonProperty("pmin")]
-        [PowerPlantMinimunPowerValidation]
+        [PowerPlantMinimumPowerValidation]
         public int Pmin { get; set; }
 
         [JsonProperty("pmax")]
+        [Range(1, int.MaxValue, ErrorMessage = "The maximum power value must be bigger than zero")]
         public int Pmax { get; set; }
     }
 }

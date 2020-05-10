@@ -12,7 +12,7 @@ namespace PowerPlant.Application.AutoMapper
                 .ForMember(o => o.Name, m => m.MapFrom(s => s.Name))
                 .ForMember(o => o.Efficiency, m => m.MapFrom(s => s.Efficiency))
                 .ForMember(o => o.MinimumPowerAmount, m => m.MapFrom(s => s.Pmin))
-                .ForMember(o => o.MaximunPowerAmount, m => m.MapFrom(s => s.Pmax));
+                .ForMember(o => o.MaximumPowerAmount, m => m.MapFrom(s => s.Pmax));
 
             CreateMap<PowerPlantDTO, Models.GasfiredPlant>()
                 .IncludeBase<PowerPlantDTO, Models.PowerPlant>();

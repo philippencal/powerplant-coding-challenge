@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace PowerPlant.Application.ValidationAttributes
 {
-    public class PowerPlantMinimunPowerValidationAttribute : ValidationAttribute
+    public class PowerPlantMinimumPowerValidationAttribute : ValidationAttribute
     {       
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
@@ -15,7 +15,7 @@ namespace PowerPlant.Application.ValidationAttributes
                 return ValidationResult.Success;
             }
 
-            var msg = $"The minimun power(pmin) can not be higher than maximun power(pmax).";
+            var msg = $"The minimum power(pmin) can not be higher than maximum power(pmax).";
             return new ValidationResult(msg);
         }
     }

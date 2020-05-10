@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PowerPlant.Application.DTO
 {
-    public  class PayloadDTO
+    public class PayloadDTO
     {
         [JsonProperty("load")]
         [Range(1, int.MaxValue, ErrorMessage = "The load value must be bigger than zero")]
