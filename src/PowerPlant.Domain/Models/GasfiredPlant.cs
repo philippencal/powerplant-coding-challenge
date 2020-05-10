@@ -25,17 +25,12 @@
 
         public override decimal CalculateEnergyCost()
         {
-            throw new System.NotImplementedException();
-        }
-
-        public override decimal ProducePower(int load)
-        {
-            throw new System.NotImplementedException();
+            return Gas / Efficiency;
         }
 
         public decimal CalculateCO2Cost()
         {
-            return 0;
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -5,6 +5,6 @@ namespace PowerPlant.Application.Interfaces
 {
     public interface IPowerCalculateAppService
     {
-        List<PowerPlantResponseDTO> CalculatePowerRequired(PayloadDTO payloadDTO);
+        List<PowerSupplyRequiredDTO> CalculatePowerRequired(PayloadDTO payloadDTO);
     }
 }

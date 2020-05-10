@@ -3,6 +3,7 @@ using PowerPlant.Application.DTO;
 using PowerPlant.Application.Factories;
 using PowerPlant.Application.Interfaces;
 using System.Collections.Generic;
+using System.Linq;
 using Models = PowerPlant.Domain.Models;
 
 namespace PowerPlant.Application.Services
@@ -16,15 +17,36 @@ namespace PowerPlant.Application.Services
             this.mapper = mapper;
         }
 
-        public List<PowerPlantResponseDTO> CalculatePowerRequired(PayloadDTO payloadDTO)
+        public List<PowerSupplyRequiredDTO> CalculatePowerRequired(PayloadDTO payloadDTO)
         {
             var powerplants = new List<Models.PowerPlant>();
+            var supplyRequired = new List<PowerSupplyRequiredDTO>();
+            var loadingRequired = payloadDTO.Load;
+
             foreach(var powerplantDTO in payloadDTO.Powerplants)
             {
                 powerplants.Add(PowerPlantFactory.Build(mapper, payloadDTO.Fuels, powerplantDTO));
             }
 
-            return null;
+            foreach(var powerplant in powerplants.OrderBy(p => p.CalculateEnergyCost()))
+            {
+                if(loadingRequired == 0)
+                {
+                    break;
+                }
+
+                if(powerplant.CanOperate())
+                {
+                    var powerProduced = powerplant.ProducePower(loadingRequired);
+                    if (powerProduced > 0)
+                    {
+                        loadingRequired -= powerProduced;
+                        supplyRequired.Add(new PowerSupplyRequiredDTO { Name = powerplant.Name, Power = powerProduced });
+                    }
+                }
+            }
+
+            return supplyRequired;
         }
     }
 }
