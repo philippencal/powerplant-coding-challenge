@@ -3,7 +3,7 @@ using Newtonsoft.Json.Serialization;
 
 namespace PowerPlant.Application.DTO
 {
-    public class PowerSupplyRequiredDTO
+    public class PowerSupplyDTO
     {
         [JsonProperty("name")]
         public string Name { get; set; }
